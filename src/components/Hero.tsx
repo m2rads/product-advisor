@@ -2,7 +2,7 @@
 
 export function Hero () {
     return (
-        <div className="hero">
+        <div>
             <p>hello world</p>
         </div>
     )
