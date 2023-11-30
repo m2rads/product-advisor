@@ -1,3 +1,6 @@
+# Product Advisor
+This project aims to make it easier to make decisions when it comes to buying products (any) by providing high level specification of specified product. You also have the ability to compare two or more products simply by providing the model number.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
