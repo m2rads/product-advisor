@@ -7,11 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
+    
   },
   "dependencies": {
     "next": "14.0.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "clsx": "^1.2.1"
   },
   "devDependencies": {
     "@types/node": "^20",
