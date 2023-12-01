@@ -3,7 +3,7 @@ import Link from "next/link"
 
 const baseStyles = {
     solid: 
-        'group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2',
+        'group inline-flex items-center justify-center rounded-lg py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2',
     outline:
         'group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none',
 }
@@ -11,7 +11,7 @@ const baseStyles = {
 const variantStyles = {
     solid: {
         slate: 
-            'bg-slate-900 text-white hover:bg-slate-700 hover:text-slate-100 active:text-slate-300 focus-visible:outline-slate-900',
+            'bg-slate-700 text-white hover:bg-slate-700 hover:text-slate-100 active:text-slate-300 focus-visible:outline-slate-900',
         emerald: 
             'bg-emerald-600 text-gray-100 hover:bg-emerald-200 hover:text-slate-300 hover:bg-emerald-500 active:bg-emerald-800 active:text-gray-100 focus-visible:outline-emerald-600',
         white:
