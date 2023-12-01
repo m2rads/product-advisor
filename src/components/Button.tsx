@@ -35,7 +35,7 @@ type ButtonProps = (
     }
 ) & (
     | Omit<React.ComponentPropsWithoutRef<typeof Link>, 'color'>
-    | Omit<React.ComponentPropsWithoutRef<'button'>, 'color'> & {
+    | (Omit<React.ComponentPropsWithoutRef<'button'>, 'color'> & {
         href?: undefined
-    }
+    })
 )
