@@ -13,9 +13,9 @@ export default function Search() {
                                 <div className="flex-1 rounded-md bg-white/5 ring-white/10 ring-1 ring-inset focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
                                 <input
                                     type="text"
-                                    name="username"
-                                    id="username"
-                                    autoComplete="username"
+                                    name="product name"
+                                    id="product-name"
+                                    autoComplete="product-name"
                                     className="w-full border-0 bg-transparent py-1.5 pl-1 focus:ring-0 sm:text-sm sm:leading-6"
                                     placeholder="Enter a product name"
                                 />
