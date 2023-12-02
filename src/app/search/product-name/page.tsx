@@ -10,7 +10,7 @@ export default function Search() {
                     <div className="sm:col-span-2">
                         <div className="mt-10">
                             <div className="flex ">
-                                <div className="flex-1 rounded-md bg-white/5 ring-white/10 ring-1 ring-inset focus-within:ring-1 focus-within:ring-inset focus-within:ring-indigo-500">
+                                <div className="flex-1 rounded-md bg-white/5 ring-white/10 ring-1 ring-inset focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
                                 <input
                                     type="text"
                                     name="username"
