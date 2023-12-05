@@ -10,7 +10,7 @@ export default function ProductInput() {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        router.push(`/search/showcase?prodcutname=${encodeURIComponent(productName)}`)
+        router.push(`/search/showcase?productname=${encodeURIComponent(productName)}`)
     }
 
     return (
