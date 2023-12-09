@@ -1,8 +1,9 @@
 'use client'
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import Loading from "./loading";
 
-export default function Showcase() {
+export default function Page() {
     const [data, setData] = useState(null);
     const searchParams = useSearchParams()
     const productName = searchParams.get("productname")
@@ -35,8 +36,18 @@ export default function Showcase() {
 
     return(
         <div>
-            <p>showcase</p>
-            {JSON.stringify(data, null, 2)}
+            {data && (
+                <>
+                    <p>showcase</p>
+                    {JSON.stringify(data, null, 2)}
+                </>
+            )}
+            {!data && (
+                <>
+                    <Loading />
+                </>
+            )}
+
         </div>
     )
 }
