@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
     
     // return new StreamingTextResponse(stream)
 
-    console.log(response)
+    console.log(response.choices[0].message.content)
 
     return new NextResponse(JSON.stringify({
         response,
