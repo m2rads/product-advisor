@@ -8,7 +8,7 @@ import { ChatBox } from './ChatBox';
 // need to add props
 export function ProductCard () {
   const [showChat, setShowChat] = useState(false);
-  const [firstIconActive, setFirstIconActive] = useState(false);
+  const [firstIconActive, setFirstIconActive] = useState(true);
   const [secondIconActive, setSecondIconActive] = useState(false);
 
   const setActive = (firstIcon: boolean, secondIcon: boolean) => {
