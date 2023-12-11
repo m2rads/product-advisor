@@ -1,55 +1,65 @@
 'use client'
-import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Loading from "./loading";
 import { ProductCard } from "@/components/ProductCard";
 
 export default function Page() {
-    const [data, setData] = useState(null);
-    const searchParams = useSearchParams()
-    const productName = searchParams.get("productname")
+    const [data, setData] = useState("");
+    const [loading, setLoading] = useState(false);
+    const searchParams = useSearchParams();
+    const productName = searchParams.get("productname");
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const response = await fetch(`/api/openai`, {
-    //               method: 'POST',
-    //               headers: {
-    //                 'Content-Type': 'application/json',
-    //               },
-    //               body: JSON.stringify({ productName }),
-    //             })
-    //             if (!response.ok) {
-    //               throw new Error('Network response was not ok')
-    //             }
-    //             const data = await response.json();
-    //             console.log("data: ", data)
-    //             setData(data);
-    //           } catch (error) {
-    //               console.log('Error fetching Github stats', error);
-    //           } finally {
-    //             // this is for setLoading state 
-    //           }
-    //     }
-    //     fetchData()
+    useEffect(() => {
+        const fetchData = async () => {
+            setLoading(true);
+            let completeData = '';
+    
+            try {
+                const response = await fetch(`/api/openai`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ productName }),
+                });
+    
+                if (!response.body) {
+                    throw new Error('No response body');
+                }
+    
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder();
+    
+                while (true) {
+                    const { value, done } = await reader.read();
+                    if (done) break;
+    
+                    completeData += decoder.decode(value, { stream: true });
+                }
+                
+                setData(completeData);
+            } catch (error) {
+                console.error('Error fetching data', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+    
+        fetchData();
+    }, [productName]);
+    
 
-    // }, [productName]);
-
-    return(
+    return (
         <div>
-            {!data && (
-                <>
-                    {/* <p>showcase</p>
-                    {JSON.stringify(data, null, 2)} */}
-                    <ProductCard />
-                </>
-            )}
+            {!data && <Loading />}
             {data && (
                 <>
-                    <Loading />
+                    {/* <p>showcase</p>
+                    <pre>{data}</pre> */}
+                    <ProductCard data={data} />
                 </>
             )}
-
         </div>
-    )
+    );
 }

@@ -1,30 +1,35 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import sonyHeadphone from '../images/sony.jpeg'
 import Image from 'next/image';
 import { Tab } from '@headlessui/react'
 import { ChatBubbleBottomCenterTextIcon, ChatBubbleLeftRightIcon } from '@heroicons/react/24/solid';
 import { ChatBox } from './ChatBox';
 
+// interface ProductData {
+//   // id: number;
+//   // name: string;
+//   description: string;
+// }
+
+// interface ProductCardProps {
+//   product: ProductData;
+// }
+
 // need to add props
-export function ProductCard () {
-  const [showChat, setShowChat] = useState(false);
-  const [firstIconActive, setFirstIconActive] = useState(false);
+export const ProductCard = ({data}) => {
+  const [firstIconActive, setFirstIconActive] = useState(true);
   const [secondIconActive, setSecondIconActive] = useState(false);
 
-  const setActive = (firstIcon: boolean, secondIcon: boolean) => {
+  const bulletPoints = data.split('\n');
+  // console.log(bulletPoints)
+
+  const setActive = (firstIcon, secondIcon) => {
     setFirstIconActive(firstIcon);
     setSecondIconActive(secondIcon);
   }
 
-
-  const productInfo = {
-    image: sonyHeadphone,
-    title: 'Product Title',
-    description: 'Product description...',
-  };
-
   return (
-    <div className="flex flex-col w-80 mx-auto mt-20">
+    <div className="flex flex-col w-80 mx-auto mt-5 sm:mt-20">
       <div className="rounded-xl">
           <Image 
               className="rounded-xl mx-auto mb-8 sm:w-2/3 py-4 border px-3"
@@ -55,14 +60,10 @@ export function ProductCard () {
             <div className="items-center w-full sm:w-auto justify-end">
                 <h1 className='text-2xl font-bold tracking-tight'>Product Name</h1>
                 <h2 className='text-xl pt-2'>Specs:</h2>
-                <ul className="list-disc pl-5 pt-5">
-                  <li className='p-2'>Active noise cancellation</li>
-                  <li className='p-2'>Wireless connectivity</li>
-                  <li className='p-2'>Bluetooth compatible</li>
-                  <li className='p-2'>Comfortable ear cushions</li>
-                  <li className='p-2'>Built-in microphone for hands-free calling</li>
-                  <li className='p-2'>Adjustable headband for a customized fit</li>
-                </ul>
+                {bulletPoints.map((element, index) => (
+                  <div className='p-2' key={index}>{element}</div>
+                ))}
+
             </div>
           </Tab.Panel>
           <Tab.Panel> <ChatBox /> </Tab.Panel>
