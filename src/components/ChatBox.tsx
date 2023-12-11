@@ -31,12 +31,12 @@ export function ChatBox () {
 
     return (
         <div className="p-4 max-w-md mx-auto bg-emerald-900 rounded-xl shadow-md">
-            <div className="mb-4 h-64 overflow-auto">
+            <div className="mb-4 h-80 overflow-auto">
                 {messages.map((message) => (
                     <div
                         key={message.id}
                         className={`p-2 my-2 rounded ${
-                            message.sender === 'user' ? 'bg-blue-700 ml-auto' : 'bg-gray-700'
+                            message.sender === 'user' ? ' ml-auto text-right' : 'text-left'
                         }`}
                     >
                         {message.text}
