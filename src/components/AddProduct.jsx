@@ -20,7 +20,7 @@ export function AddProduct() {
           onClick={openModal}
           className="rounded-md bg-blue-800 px-4 py-2 mr-4 mt-4 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 ml-atuo"
         >
-          Open dialog
+          Add a product
         </button>
       </div>
 
