@@ -48,12 +48,12 @@ export const ProductCard = ({data}) => {
                   className={`h-6 w-6 m-1 text-gray-900 outline-none ${firstIconActive ? 'opacity-100' : 'opacity-50'}`} 
               />
           </Tab>
-          <Tab>
+          {/* <Tab>
               <ChatBubbleLeftRightIcon 
                   onClick={() => setActive(false, true)} 
                   className={`h-6 w-6 m-1 text-gray-900 outline-none ${secondIconActive ? 'opacity-100' : 'opacity-50'}`} 
               />
-          </Tab>
+          </Tab> */}
         </Tab.List>
         <Tab.Panels>
           <Tab.Panel>
@@ -65,7 +65,7 @@ export const ProductCard = ({data}) => {
                 ))}
             </div>
           </Tab.Panel>
-          <Tab.Panel> <ChatBox /> </Tab.Panel>
+          {/* <Tab.Panel> <ChatBox /> </Tab.Panel> */}
         </Tab.Panels>
       </Tab.Group>
       </div>
