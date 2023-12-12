@@ -7,7 +7,7 @@ import { PopoverWindow } from "@/components/PopoverWindow"
 import { AddProduct } from "@/components/AddProduct"
 
 export default function Page() {
-    const [data, setData] = useState("");
+    const [data, setData] = useState<string[]>([""]);
     const [loading, setLoading] = useState(false);
     const searchParams = useSearchParams();
     const productName = searchParams.get("productname");
@@ -15,6 +15,7 @@ export default function Page() {
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
+            const dataClone = data
             let completeData = '';
     
             try {
@@ -39,8 +40,10 @@ export default function Page() {
     
                     completeData += decoder.decode(value, { stream: true });
                 }
-                
-                setData(completeData);
+
+                dataClone.push(completeData)
+                setData(dataClone);
+                console.log(data)
             } catch (error) {
                 console.error('Error fetching data', error);
             } finally {
@@ -59,7 +62,9 @@ export default function Page() {
                 <div>
                     <AddProduct />
                     <div className="flex">
-                        <ProductCard data={data} />
+                        {data.map((data, index) => (
+                            <ProductCard index={index} data={data} />
+                        ))}
                     </div>
                     <PopoverWindow /> 
                 </div>

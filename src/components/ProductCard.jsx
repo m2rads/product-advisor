@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Tab } from '@headlessui/react'
 import { ChatBubbleBottomCenterTextIcon } from '@heroicons/react/24/solid';
 
-export const ProductCard = ({data}) => {
+export const ProductCard = ({index, data}) => {
   const [firstIconActive, setFirstIconActive] = useState(true);
   const [secondIconActive, setSecondIconActive] = useState(false);
 
