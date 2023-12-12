@@ -2,26 +2,13 @@ import React, { useState } from 'react';
 import sonyHeadphone from '../images/sony.jpeg'
 import Image from 'next/image';
 import { Tab } from '@headlessui/react'
-import { ChatBubbleBottomCenterTextIcon, ChatBubbleLeftRightIcon } from '@heroicons/react/24/solid';
-import { ChatBox } from './ChatBox';
+import { ChatBubbleBottomCenterTextIcon } from '@heroicons/react/24/solid';
 
-// interface ProductData {
-//   // id: number;
-//   // name: string;
-//   description: string;
-// }
-
-// interface ProductCardProps {
-//   product: ProductData;
-// }
-
-// need to add props
 export const ProductCard = ({data}) => {
   const [firstIconActive, setFirstIconActive] = useState(true);
   const [secondIconActive, setSecondIconActive] = useState(false);
 
   const bulletPoints = data.split('\n');
-  // console.log(bulletPoints)
 
   const setActive = (firstIcon, secondIcon) => {
     setFirstIconActive(firstIcon);
@@ -48,12 +35,6 @@ export const ProductCard = ({data}) => {
                   className={`h-6 w-6 m-1 text-gray-900 outline-none ${firstIconActive ? 'opacity-100' : 'opacity-50'}`} 
               />
           </Tab>
-          {/* <Tab>
-              <ChatBubbleLeftRightIcon 
-                  onClick={() => setActive(false, true)} 
-                  className={`h-6 w-6 m-1 text-gray-900 outline-none ${secondIconActive ? 'opacity-100' : 'opacity-50'}`} 
-              />
-          </Tab> */}
         </Tab.List>
         <Tab.Panels>
           <Tab.Panel>
@@ -65,7 +46,6 @@ export const ProductCard = ({data}) => {
                 ))}
             </div>
           </Tab.Panel>
-          {/* <Tab.Panel> <ChatBox /> </Tab.Panel> */}
         </Tab.Panels>
       </Tab.Group>
       </div>
