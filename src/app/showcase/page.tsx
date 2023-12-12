@@ -8,9 +8,11 @@ import { AddProduct } from "@/components/AddProduct"
 
 export default function Page() {
     const [data, setData] = useState<string[]>([]);
+    // const [productName, setProductName] = useState<string | null>("");
     const [loading, setLoading] = useState(false);
     const searchParams = useSearchParams();
     const productName = searchParams.get("productname");
+    // setProductName(name);
     console.log("debuggin product name -- outside of useEffect: ", productName)
 
 
