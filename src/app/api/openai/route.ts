@@ -27,16 +27,4 @@ export async function POST(req: NextRequest) {
     console.log("stream: ", stream)
     
     return new StreamingTextResponse(stream)
-
-    // console.log(response.choices[0].message.content)
-    // const content = response.choices[0].message.content
-   
-    // return new NextResponse(JSON.stringify({
-    //     content,
-    // }), {
-    //     status: 200,
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //       },
-    // })
 }

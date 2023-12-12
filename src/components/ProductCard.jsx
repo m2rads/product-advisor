@@ -57,13 +57,12 @@ export const ProductCard = ({data}) => {
         </Tab.List>
         <Tab.Panels>
           <Tab.Panel>
-            <div className="items-center w-full sm:w-auto justify-end">
+            <div className="items-center w-full sm:w-auto h-96 overflow-auto">
                 <h1 className='text-2xl font-bold tracking-tight'>Product Name</h1>
                 <h2 className='text-xl pt-2'>Specs:</h2>
                 {bulletPoints.map((element, index) => (
                   <div className='p-2' key={index}>{element}</div>
                 ))}
-
             </div>
           </Tab.Panel>
           <Tab.Panel> <ChatBox /> </Tab.Panel>
