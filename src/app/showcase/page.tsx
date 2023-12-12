@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Loading from "./loading";
 import { ProductCard } from "@/components/ProductCard";
+import { PopoverWindow } from "@/components/PopoverWindow"
 
 export default function Page() {
     const [data, setData] = useState("");
@@ -55,10 +56,10 @@ export default function Page() {
             {!data && <Loading />}
             {data && (
                 <>
-                    {/* <p>showcase</p>
-                    <pre>{data}</pre> */}
                     <ProductCard data={data} />
+                    <PopoverWindow /> 
                 </>
+
             )}
         </div>
     );
