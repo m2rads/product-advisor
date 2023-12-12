@@ -7,12 +7,15 @@ import { PopoverWindow } from "@/components/PopoverWindow"
 import { AddProduct } from "@/components/AddProduct"
 
 export default function Page() {
-    const [data, setData] = useState<string[]>([""]);
+    const [data, setData] = useState<string[]>([]);
     const [loading, setLoading] = useState(false);
     const searchParams = useSearchParams();
     const productName = searchParams.get("productname");
+    console.log("debuggin product name -- outside of useEffect: ", productName)
+
 
     useEffect(() => {
+        console.log("debuggin product name -- in useEffect: ", productName)
         const fetchData = async () => {
             setLoading(true);
             const dataClone = data
@@ -57,8 +60,8 @@ export default function Page() {
 
     return (
         <div>
-            {!data && <Loading />}
-            {data && (
+            {data.length == 0 && <Loading />}
+            {data.length >= 1 && (
                 <div>
                     <AddProduct />
                     <div className="flex">

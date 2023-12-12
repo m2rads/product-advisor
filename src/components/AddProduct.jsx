@@ -1,8 +1,12 @@
+'use client'
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
+import { useRouter } from "next/navigation"
 
 export function AddProduct() {
   let [isOpen, setIsOpen] = useState(false)
+  const [productName, setProductName] = useState("")
+  const router = useRouter();
 
   function closeModal() {
     setIsOpen(false)
@@ -11,6 +15,12 @@ export function AddProduct() {
   function openModal() {
     setIsOpen(true)
   }
+
+  const handleSubmit = async (event) => {
+    setIsOpen(false)
+    event.preventDefault();
+    router.push(`/showcase?productname=${productName}`);
+  };
 
   return (
     <>
@@ -68,13 +78,13 @@ export function AddProduct() {
                         id='username'
                         type='text'
                         placeholder='Product Name'
-                        // value={username}
-                        // onChange={(e) => setUsername(e.target.value)}
+                        value={productName}
+                        onChange={(e) => setProductName(e.target.value)}
                     />
                     <button
                       type="button"
                       className="inline-flex justify-center rounded-md border border-transparent bg-blue-700 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
+                      onClick={handleSubmit}
                     >
                       Add
                     </button>
