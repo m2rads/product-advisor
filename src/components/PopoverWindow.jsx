@@ -5,7 +5,7 @@ import { ChatBox } from './ChatBox'
 
 export function PopoverWindow() {
   return (
-    <div className="fixed bottom-2 left-5 w-full max-w-sm">
+    <div className="fixed bottom-2 left-2 w-full max-w-sm">
       <Popover className="relative">
         {({ open }) => (
           <>
@@ -31,8 +31,8 @@ export function PopoverWindow() {
               leaveTo="opacity-0 translate-y-1"
             >
               <Popover.Panel className="absolute bottom-10 z-10 w-screen max-w-sm transform px-4 sm:px-0 lg:max-w-3xl">
-                <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black/5">
-                  <div className="relative grid gap-8 bg-gray-300 p-7 lg:grid-cols-2">
+                <div className="overflow-hidden rounded-xl ring-1 ring-black/5">
+                  <div className="relative gap-8 lg:grid-cols-2">
                     <ChatBox />
                   </div>
                 </div>
