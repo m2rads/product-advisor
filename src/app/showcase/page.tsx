@@ -66,7 +66,7 @@ export default function Page() {
                     <AddProduct />
                     <div className="flex">
                         {data.map((data, index) => (
-                            <ProductCard index={index} data={data} />
+                            <ProductCard key={index} data={data} />
                         ))}
                     </div>
                     <PopoverWindow /> 
