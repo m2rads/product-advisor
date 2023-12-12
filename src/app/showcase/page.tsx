@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import Loading from "./loading";
 import { ProductCard } from "@/components/ProductCard";
 import { PopoverWindow } from "@/components/PopoverWindow"
+import { AddProduct } from "@/components/AddProduct"
 
 export default function Page() {
     const [data, setData] = useState("");
@@ -55,11 +56,13 @@ export default function Page() {
         <div>
             {!data && <Loading />}
             {data && (
-                <>
-                    <ProductCard data={data} />
+                <div>
+                    <AddProduct />
+                    <div className="flex">
+                        <ProductCard data={data} />
+                    </div>
                     <PopoverWindow /> 
-                </>
-
+                </div>
             )}
         </div>
     );
