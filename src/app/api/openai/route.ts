@@ -11,6 +11,7 @@ export const runtime = 'edge'
 
 export async function POST(req: NextRequest) {
     const { productName, chatInput } = await req.json();
+    console.log("hello mate: ", chatInput)
 
     let message: ChatCompletionMessageParam = {role: 'user', content: ''}
 
@@ -22,17 +23,18 @@ export async function POST(req: NextRequest) {
         message = productMessage
     } else if (chatInput) {
         const chatMessage: ChatCompletionMessageParam = {
-            role: 'assistant', 
-            content: `This is my question regarding the product information I recieved from you. Question: ${chatInput}.`
+            role: 'user', 
+            content: `This is my question regarding the information that I recieved from you about this product: ${productName}. Question: ${chatInput}.`
         };
 
         message = chatMessage
     }
+
+    console.log(message)
     
     const response = await openaiHandler(message)
 
     const stream = OpenAIStream(response)
-    console.log("stream: ", stream)
     
     return new StreamingTextResponse(stream)
 }
