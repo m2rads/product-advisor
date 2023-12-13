@@ -29,20 +29,27 @@ export async function POST(req: NextRequest) {
 
         message = chatMessage
     }
-
-    console.log(message)
     
     const response = await openaiHandler(message)
+    // console.log(response.choices[0].message.content)
+    const result = response.choices[0].message.content
 
-    const stream = OpenAIStream(response)
-    
-    return new StreamingTextResponse(stream)
+
+    return new NextResponse(JSON.stringify({
+        result,
+    }), { 
+        status: 200,
+        headers: {'Content-Type': 'application/json'}
+    })
+
+    // const stream = OpenAIStream(response)    
+    // return new StreamingTextResponse(stream)
 }
 
 async function openaiHandler(message: ChatCompletionMessageParam) { 
     const response = await openai.chat.completions.create({
         model: 'gpt-3.5-turbo',
-        stream: true,
+        stream: false,
         messages: [message],
     });
 
