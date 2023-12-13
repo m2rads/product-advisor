@@ -8,23 +8,17 @@ import { AddProduct } from "@/components/AddProduct"
 
 export default function Page() {
     const [data, setData] = useState<string[]>([]);
-    // const [productName, setProductName] = useState<string | null>("");
     const [loading, setLoading] = useState(false);
     const searchParams = useSearchParams();
     const productName = searchParams.get("productname");
-    // setProductName(name);
-    console.log("debuggin product name -- outside of useEffect: ", productName)
-
 
     useEffect(() => {
-        console.log("debuggin product name -- in useEffect: ", productName)
         const fetchData = async () => {
             setLoading(true);
             const dataClone = data
-            let completeData = '';
     
             try {
-                const response = await fetch(`/api/openai`, {
+                const response = await fetch(`/api/langchain`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -36,19 +30,11 @@ export default function Page() {
                     throw new Error('No response body');
                 }
     
-                const reader = response.body.getReader();
-                const decoder = new TextDecoder();
-    
-                while (true) {
-                    const { value, done } = await reader.read();
-                    if (done) break;
-    
-                    completeData += decoder.decode(value, { stream: true });
-                }
+                const jsonData = await response.json()
+                const resultData = jsonData.result
 
-                dataClone.push(completeData)
+                dataClone.push(resultData)
                 setData(dataClone);
-                console.log(data)
             } catch (error) {
                 console.error('Error fetching data', error);
             } finally {
