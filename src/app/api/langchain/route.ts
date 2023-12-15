@@ -137,4 +137,5 @@ export async function POST(req: NextRequest) {
     }), { 
         status: 200,
         headers: {'Content-Type': 'application/json'}
-    })}
+    })
+}
