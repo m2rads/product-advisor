@@ -8,7 +8,7 @@ export const ProductCard = ({data}) => {
   const [firstIconActive, setFirstIconActive] = useState(true);
   const [secondIconActive, setSecondIconActive] = useState(false);
 
-  const bulletPoints = data.split('\n');
+  // const bulletPoints = data.split('\n');
 
   const setActive = (firstIcon, secondIcon) => {
     setFirstIconActive(firstIcon);
@@ -41,9 +41,10 @@ export const ProductCard = ({data}) => {
             <div className="items-center w-full sm:w-auto h-96 overflow-auto">
                 <h1 className='text-2xl font-bold tracking-tight'>Product Name</h1>
                 <h2 className='text-xl pt-2'>Specs:</h2>
-                {bulletPoints.map((element, index) => (
+                {/* {bulletPoints.map((element, index) => (
                   <div className='p-2' key={index}>{element}</div>
-                ))}
+                ))} */}
+                {data}
             </div>
           </Tab.Panel>
         </Tab.Panels>
