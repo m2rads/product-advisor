@@ -23,7 +23,7 @@ export function ChatBox () {
         setInputValue('');
 
         try {
-            const response = await fetch(`/api/openai`, {
+            const response = await fetch(`/api/langchain`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -35,20 +35,14 @@ export function ChatBox () {
                 throw new Error('No response body');
             }
 
-            const reader = response.body.getReader();
-            const decoder = new TextDecoder();
-            let completeData = '';
-
-            while (true) {
-                const { value, done } = await reader.read();
-                if (done) break;
-                completeData += decoder.decode(value, { stream: true });
-            }
+            
+            const jsonData = await response.json()
+            const resultData = jsonData.result
 
             // Assuming completeData contains the bot's reply
             const botResponse: Message = {
                 id: messages.length + 1,
-                text: completeData, // the completeData string is the bot's response
+                text: resultData, // the completeData string is the bot's response
                 sender: 'bot'
             };
 
